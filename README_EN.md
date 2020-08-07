@@ -192,6 +192,6 @@ npm run build
 ![image](https://github.com/iview/iview-admin/raw/dev/github-gif/message.gif)
 
 ## License
-[MIT](http://opensource.org/licenses/MIT)
+[Apache License 2.0](LICENSE)
 
 Copyright (c) 2016-present, iView
