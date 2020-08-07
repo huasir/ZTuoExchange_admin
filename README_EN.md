@@ -1,8 +1,16 @@
-<p align="center">
-    <a href="https://www.iviewui.com">
-        <img width="200" src="https://file.iviewui.com/logo.svg">
-    </a>
-</p>
+- ## [简体中文](README.md)
+---
+
+# Donate:
+#### Your donation is our biggest motivation for open source
+- BTC/USDT (Bitcoin/USDT): 1Dwwqhw9pV9iSSQwuJc8nAygda7XfahaoW
+- ETH/USDT (Ethereum/USDT): 0x4f1ea0f10aa99f608f31f70b4d3119f6928693ed
+- LTC (Litecoin): LXr4TMtDhCSpdAo98vg2sbvX3UXDVPQvMa
+
+## Join us
+    In order to facilitate everyone to communicate and learn, please join the QQ exchange group:
+    *Blockchain exchange technical knowledge exchange group [QQ group: 735446452]
+
 
 # iView Admin
 [![](https://img.shields.io/travis/iview/iview-admin.svg?style=flat-square)](https://travis-ci.org/iview/iview-admin)
