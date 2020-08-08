@@ -1,5 +1,5 @@
 
-- ## [English](README-EN.md)
+- ## [English](/README-EN.md)
 ---
 # 捐赠:
 #### 您的捐赠是我们开源最大的动力
