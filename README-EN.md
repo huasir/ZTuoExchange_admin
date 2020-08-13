@@ -1,5 +1,7 @@
+# This source code is limited to exchange and study, where it involves legal issues and I have nothing to do with it
+
 - ## [简体中文](README.md)
----
+----
 
 # Donate:
 #### Your donation is our biggest motivation for open source
