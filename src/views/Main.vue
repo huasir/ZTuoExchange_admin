@@ -13,12 +13,12 @@
                 :menu-list="menuList">
                 <div slot="top" class="logo-con">
                     <div v-show="!shrink">
-                      <!-- <img v-if="darkImgOrLightImg" src="../images/logo.png" key="max-logo" />
-                      <img v-if="!darkImgOrLightImg"src="../images/logo_light.png" key="max-logo"/> -->
+                      <img v-if="darkImgOrLightImg" src="../images/logo.png" key="max-logo" />
+                      <img v-if="!darkImgOrLightImg"src="../images/logo_light.png" key="max-logo"/>
                     </div>
                     <div v-show="shrink">
-                      <!-- <img v-if="darkImgOrLightImg" src="../images/logo-min.png" key="max-logo" />
-                      <img v-if="!darkImgOrLightImg"src="../images/logo-min-light.png" key="max-logo" /> -->
+                      <img v-if="darkImgOrLightImg" src="../images/logo-min.png" key="max-logo" />
+                      <img v-if="!darkImgOrLightImg"src="../images/logo-min-light.png" key="max-logo" />
                     </div>
                 </div>
             </shrinkable-menu>

@@ -3,7 +3,7 @@
 </style>
 
 <template>
-    <div class="login" @keydown.enter="handle">
+    <div class="login" @keydown.enter="handle" style="background-image: url('/src/images/login.jpg'); background-repeat: no-repeat;background-size: 100% 100%;">
         <div class="login-con">
             <Card :bordered="false">
                 <p slot="title">
@@ -136,7 +136,7 @@ export default {
             signIn(this.form)
                 .then(res => {
                     if (!res.code) {
-                        this.phoneNum = res.data;
+                        // this.phoneNum = res.data;
                         Cookies.set('userPhone', this.phoneNum);
                         Cookies.set('user', res.data.admin.username, { expires: 7 });
                         Cookies.set('userInfo', res.data.admin, { expires: 7 });
