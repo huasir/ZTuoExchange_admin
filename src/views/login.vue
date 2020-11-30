@@ -3,6 +3,7 @@
 </style>
 
 <template>
+  <<<<<<< HEAD
   <!--    <div class="login" @keydown.enter="handle">-->
   <div class="login" @keydown.enter="handle"
        :style="{backgroundImage: 'url(' + require('../images/login.jpg') + ');background-repeat: no-repeat;background-size: 100% 100%'}">
@@ -16,66 +17,81 @@
           <Form ref="loginForm" :model="form" :rules="rules">
             <FormItem prop="username">
               <Input v-model="form.username" :disabled="btnDisable" placeholder="请输入用户名">
-                            <span slot="prepend">
+                =======
+                <div class="login" @keydown.enter="handle"
+                     style="background-image: url('/src/images/login.jpg'); background-repeat: no-repeat;background-size: 100% 100%;">
+                  <div class="login-con">
+                    <Card :bordered="false">
+                      <p slot="title">
+                        <Icon type="log-in"></Icon>
+                        欢迎登录
+                      </p>
+                      <div class="form-con" v-if="!phoneNum">
+                        <Form ref="loginForm" :model="form" :rules="rules">
+                          <FormItem prop="username">
+                            <Input v-model="form.username" :disabled="btnDisable" placeholder="请输入用户名">
+                              >>>>>>> 6257c11d67ba5ffb0c742f5203e74a7e4b212353
+                              <span slot="prepend">
                                 <Icon :size="16" type="person"></Icon>
                             </span>
-              </Input>
-            </FormItem>
+                            </Input>
+                          </FormItem>
 
-            <FormItem prop="password">
-              <Input type="password" v-model="form.password" :disabled="btnDisable" placeholder="请输入密码">
+                          <FormItem prop="password">
+                            <Input type="password" v-model="form.password" :disabled="btnDisable" placeholder="请输入密码">
                             <span slot="prepend">
                                 <Icon :size="14" type="locked"></Icon>
                             </span>
-              </Input>
-            </FormItem>
+                            </Input>
+                          </FormItem>
 
-            <Row v-show="!phoneNum">
-              <Col span="12">
-                <Input v-model="form.captcha" placeholder="验证码">
+                          <Row v-show="!phoneNum">
+                            <Col span="12">
+                              <Input v-model="form.captcha" placeholder="验证码">
                             <span slot="prepend">
                                 <Icon :size="14" type="locked"></Icon>
                             </span></Input>
-              </Col>
-              <Col span="10" offset="2">
-                <img :src="logimg" style='vertical-align: middle;width:95%;height:95%' @click="chanloimg"/>
-              </Col>
-            </Row>
+                            </Col>
+                            <Col span="10" offset="2">
+                              <img :src="logimg" style='vertical-align: middle;width:95%;height:95%'
+                                   @click="chanloimg"/>
+                            </Col>
+                          </Row>
 
-            <FormItem style='margin-top:10px'>
-              <Button @click="handle" type="warning" long>登录</Button>
-            </FormItem>
+                          <FormItem style='margin-top:10px'>
+                            <Button @click="handle" type="warning" long>登录</Button>
+                          </FormItem>
 
-            <p style='color:red;text-align:center' v-if="messshow">{{ errormessage }}</p>
-          </Form>
-        </div>
-        <div v-if="!!phoneNum">
-          <Form>
-            <!-- <FormItem>
-  <p class="phone-num">{{ phoneNum | hidePhoneNum }}</p>
-</FormItem> -->
-            <FormItem>
-              <Input placeholder="请输入谷歌验证码" v-model="code" :class="{appendBtn: count===0}">
-                <!-- <Button slot="append" v-if="count>0" :disabled="count>0">{{count}}s后重新获取</Button>
-     <Button slot="append" v-else-if="count===0" type="success" @click="getCodeTwice">获取验证码</Button> -->
-              </Input>
-            </FormItem>
-            <FormItem>
-              <Row>
-                <Col span="11">
-                  <Button @click="handle" type="warning" long>登录</Button>
-                </Col>
-                <Col span="11" offset="2">
-                  <Button @click="cancelSignIn" long>取消</Button>
-                </Col>
-              </Row>
-            </FormItem>
-          </Form>
+                          <p style='color:red;text-align:center' v-if="messshow">{{ errormessage }}</p>
+                        </Form>
+                      </div>
+                      <div v-if="!!phoneNum">
+                        <Form>
+                          <!-- <FormItem>
+                <p class="phone-num">{{ phoneNum | hidePhoneNum }}</p>
+              </FormItem> -->
+                          <FormItem>
+                            <Input placeholder="请输入谷歌验证码" v-model="code" :class="{appendBtn: count===0}">
+                              <!-- <Button slot="append" v-if="count>0" :disabled="count>0">{{count}}s后重新获取</Button>
+                   <Button slot="append" v-else-if="count===0" type="success" @click="getCodeTwice">获取验证码</Button> -->
+                            </Input>
+                          </FormItem>
+                          <FormItem>
+                            <Row>
+                              <Col span="11">
+                                <Button @click="handle" type="warning" long>登录</Button>
+                              </Col>
+                              <Col span="11" offset="2">
+                                <Button @click="cancelSignIn" long>取消</Button>
+                              </Col>
+                            </Row>
+                          </FormItem>
+                        </Form>
 
-        </div>
-      </Card>
-    </div>
-  </div>
+                      </div>
+                    </Card>
+                  </div>
+                </div>
 </template>
 
 <script>
@@ -141,7 +157,7 @@ export default {
       signIn(this.form)
           .then(res => {
             if (!res.code) {
-              this.phoneNum = res.data;
+              // this.phoneNum = res.data;
               Cookies.set('userPhone', this.phoneNum);
               Cookies.set('user', res.data.admin.username, {expires: 7});
               Cookies.set('userInfo', res.data.admin, {expires: 7});
@@ -163,34 +179,93 @@ export default {
       // }
     }
   },
-  beforeRouteLeave(to, from, next) {
-    clearInterval(this.timer)
-    window.location.reload();
-    next();
+  getCodeTwice() {
+    this.count = 60;
+    getCodeAgain({phone: this.phoneNum})
+        .then(res => {
+        })
+        .catch(err => {
+          console.log(err)
+        })
   },
-  created() {
-    this.phoneNum = Cookies.get('userPhone');
-    clearInterval(this.timer)
-    this.logimg = `${BASICURL}/admin/captcha?cid=ADMIN_LOGIN`;
+  chanloimg() {
+    this.logimg = `${BASICURL}/admin/captcha?cid=ADMIN_LOGIN&a=${Math.random().toFixed(
+        2
+    )}`;
   },
-  filters: {
-    hidePhoneNum(val) {
-      return val.split('').fill('*', 3, 7).join('');
+  processPermission(menu) {
+    if (menu.name != "") this.permissions[menu.name] = 1;
+    if (menu.subMenu != null && menu.subMenu.length > 0) {
+      for (var i = 0; i < menu.subMenu.length; i++) {
+        this.processPermission(menu.subMenu[i]);
+      }
     }
   },
-  watch: {
-    count(newVal, oldVal) {
-      if (newVal > 0) {
-        this.timer = setTimeout(() => {
-          this.count--;
-        }, 1000)
-      } else {
-        clearInterval(this.timer)
-      }
-    },
-    phoneNum(newVal, oldVal) {
-      if (!!newVal) this.count = 0;
+  handle() {
+    signIn(this.form)
+        .then(res => {
+          if (!res.code) {
+            this.phoneNum = res.data;
+            Cookies.set('userPhone', this.phoneNum);
+            Cookies.set('user', res.data.admin.username, {expires: 7});
+            Cookies.set('userInfo', res.data.admin, {expires: 7});
+            setStore("leftSidebarList", res.data.permissions);
+            this.$router.push({name: "home_index"});
+          } else this.$Message.error(res.message)
+        }).catch(err => console.log(err));
+    // if (!!this.phoneNum) {
+    //     signIn({code:this.code})
+    //         .then(res => {
+    //             if (!res.code) {
+    //
+    //
+    //             } else this.$Message.error(res.message);
+    //         })
+    //         .catch(err => { console.log(err) })
+    // } else {
+
+    // }
+  }
+}
+,
+beforeRouteLeave(to, from, next)
+{
+  clearInterval(this.timer)
+  window.location.reload();
+  next();
+}
+,
+created()
+{
+  this.phoneNum = Cookies.get('userPhone');
+  clearInterval(this.timer)
+  this.logimg = `${BASICURL}/admin/captcha?cid=ADMIN_LOGIN`;
+}
+,
+filters: {
+  hidePhoneNum(val)
+  {
+    return val.split('').fill('*', 3, 7).join('');
+  }
+}
+,
+watch: {
+  count(newVal, oldVal)
+  {
+    if (newVal > 0) {
+      this.timer = setTimeout(() => {
+        this.count--;
+      }, 1000)
+    } else {
+      clearInterval(this.timer)
     }
   }
-};
+,
+  phoneNum(newVal, oldVal)
+  {
+    if (!!newVal) this.count = 0;
+  }
+}
+}
+;
 </script>
