@@ -5,7 +5,7 @@
 <template>
   <!--    <div class="login" @keydown.enter="handle">-->
   <div class="login" @keydown.enter="handle"
-       style="background-image: url(' src/images/login.jpg'); background-repeat: no-repeat;background-size: 100% 100% ;">
+       :style="{backgroundImage: 'url(' + require('../images/login.jpg') + ');background-repeat: no-repeat;background-size: 100% 100%'}">
     <div class="login-con">
       <Card :bordered="false">
         <p slot="title">
